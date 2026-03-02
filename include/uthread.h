@@ -20,4 +20,5 @@ typedef struct {
 
 ucontext_t	*thread_init(void);
 int		thread_create(void (*)(void));
-int		thread_yield();
+int		thread_yield(void);
+int		thread_cleanup(void);
