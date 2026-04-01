@@ -1,8 +1,5 @@
 #include "../include/uthread.h"
 
-/* =========================
-   Global Scheduler State
-   ========================= */
 
 static TCB *threads[MAX_THREADS];
 static TCB *current_thread = NULL;
@@ -12,10 +9,6 @@ static ucontext_t cleanup_ctx;
 static void *cleanup_stack = NULL;
 
 static int thread_count = 0;
-
-/* =========================
-   Internal Scheduler Helpers
-   ========================= */
 
 static int find_next_thread() {
     if (current_thread == NULL) return -1;
@@ -48,10 +41,6 @@ static void start_timer() {
 
     setitimer(ITIMER_REAL, &timer, NULL);
 }
-
-/* =========================
-   Public API
-   ========================= */
 
 int thread_init(void) {
     for (int i = 0; i < MAX_THREADS; i++) {
@@ -153,8 +142,7 @@ int thread_yield(void) {
     int next_id = find_next_thread();
 
     if (next_id == -1) {
-        return 0; // only one runnable thread
-    }
+        return 0;     }
 
     TCB *prev = current_thread;
     TCB *next = threads[next_id];
