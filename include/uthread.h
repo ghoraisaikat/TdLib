@@ -13,7 +13,7 @@
 
 #define MAX_THREADS 10
 #define STACK_SIZE SIGSTKSZ
-#define QUANTUM 50000   // 50 ms
+#define QUANTUM 50000   
 
 typedef enum {
     READY,
@@ -29,7 +29,6 @@ typedef struct {
     thread_state_t state;
 } TCB;
 
-/* Public API */
 int thread_init(void);
 int thread_create(void (*func)(void));
 void thread_start(void);
@@ -37,7 +36,6 @@ int thread_yield(void);
 void thread_exit(void);
 void thread_cleanup(void);
 
-/* Debug / utility */
 void print_threads(void);
 
 #endif
