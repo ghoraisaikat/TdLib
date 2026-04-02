@@ -11,7 +11,7 @@
 #include <unistd.h>
 #include <stdbool.h>
 
-#define MAX_THREADS 10
+#define MAX_THREADS 10000
 #define STACK_SIZE SIGSTKSZ
 #define QUANTUM 50000   
 

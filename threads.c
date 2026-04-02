@@ -1,9 +1,14 @@
 #include "include/uthread.h"
+#include "include/mut.h"
+
+volatile mut_t mutex = MUTEX_INIT;
 
 void func1(void) {
     for (int i = 0; i < 10; i++) {
+    	acquire(&mutex);
         printf("Thread 1: Bing! (%d)\n", i);
         usleep(70000);
+	release(&mutex);
     }
     printf("Thread 1 exiting...\n");
     thread_exit();
