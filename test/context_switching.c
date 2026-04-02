@@ -3,7 +3,7 @@
 #include <time.h>
 #include <sched.h>
 
-#define YIELDS 1000000
+#define YIELDS 10000
 
 void* yielder(void* arg) {
     for (int i = 0; i < YIELDS; i++) {
